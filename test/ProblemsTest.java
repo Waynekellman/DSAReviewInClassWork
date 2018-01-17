@@ -1,5 +1,8 @@
 import nyc.c4q.Problems;
+import org.junit.Assert;
 import org.junit.Test;
+
+import java.util.HashMap;
 
 import static org.junit.Assert.assertArrayEquals;
 
@@ -113,32 +116,50 @@ public class ProblemsTest {
 
     @Test
     public void countTheLetters_works_on_empty_input() {
-
+        HashMap<String, Integer> testMap = new HashMap<>();
+        Assert.assertEquals(testMap,Problems.countTheLetters(""));
     }
 
     @Test
     public void countTheLetters_works_on_null_input() {
+        HashMap<String, Integer> testMap = new HashMap<>();
+        Assert.assertEquals(testMap,Problems.countTheLetters(null));
 
     }
 
     @Test
     public void countTheLetters_works_on_single_char() {
 
+        HashMap<String, Integer> testMap = new HashMap<>();
+        testMap.put("c", 0);
+        Assert.assertEquals(testMap,Problems.countTheLetters("c"));
     }
 
     @Test
     public void countTheLetters_works_on_duplicate_char_word() {
 
+        HashMap<String, Integer> testMap = new HashMap<>();
+        testMap.put("c",1);
+        Assert.assertEquals(testMap,Problems.countTheLetters("cc"));
     }
 
     @Test
     public void countTheLetters_works_on_multi_char_word() {
 
+        HashMap<String, Integer> testMap = new HashMap<>();
+        testMap.put("k",1);
+        testMap.put("i",0);
+        testMap.put("d",1);
+        Assert.assertEquals(testMap,Problems.countTheLetters("kkidd"));
     }
 
     @Test
     public void countTheLetters_works_on_symbols() {
 
+        HashMap<String, Integer> testMap = new HashMap<>();
+        testMap.put("%",0);
+        testMap.put("&",0);
+        Assert.assertEquals(testMap,Problems.countTheLetters("%&"));
     }
 
 }

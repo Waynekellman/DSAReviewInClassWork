@@ -128,6 +128,10 @@ public class Problems {
 
          return result;
          */
+
+        if (input == null){
+            return new HashMap<>();
+        }
         HashMap<String,Integer> stringCount = new HashMap<>();
         for (Character c : input.toCharArray()) {
             if (!stringCount.containsKey(c.toString())){
