@@ -1,6 +1,7 @@
 package nyc.c4q;
 
-import java.util.HashMap;
+import java.lang.reflect.Array;
+import java.util.*;
 
 public class Problems {
 
@@ -14,8 +15,32 @@ public class Problems {
      * If there are no even numbers, return the empty array.
      */
     public static int[] selectEvenNumbers(int[] numbers) {
-        return numbers;
+        int count = 0;
+        if (numbers == null){
+            return new int[]{};
+        }
+        for (int i : numbers) {
+            if (i%2 == 0 && i >= 0){
+                count++;
+            }
+        }
+        int[] evenNumbers = new int[count];
+        for (int i = 0; i < numbers.length; i++) {
+            if (numbers[i] < 0){
+                continue;
+            }
+            if (numbers[i]%2 == 0){
+                evenNumbers[i] = numbers[i];
+            }
+        }
+
+        return evenNumbers;
     }
+
+//    public static int[] selectEvenNumbers(int[] numbers){
+//        if (numbers == null) return new int[]{};
+//        return Arrays.stream(numbers).filter(n -> n >= 0 && n%2 == 0).toArray();
+//    }
 
 
 
@@ -37,7 +62,26 @@ public class Problems {
      ```
      */
     public static int[] removeDupes(int[] numbers) {
-        return numbers;
+        Map<Integer,Integer> numCount = new HashMap<>();
+        for(int n:numbers){
+            if(!numCount.containsKey(n)){
+                numCount.put(n,0);
+            }else{
+                numCount.put(n,numCount.get(n)+1);
+            }
+        }
+        List<Integer> noDupes = new ArrayList<>();
+        for(int y:numCount.keySet()){
+            if(numCount.get(y)==0){
+                noDupes.add(y);
+            }
+        }
+        int[] result = new int[noDupes.size()];
+        for(int j=0;j<noDupes.size();j++){
+            result[j] = noDupes.get(j);
+        }
+
+        return result;
     }
 
 
@@ -62,6 +106,37 @@ public class Problems {
      ```
      */
     public static HashMap<String, Integer> countTheLetters(String input) {
-        return null;
+        /**
+         * Map<Integer,Integer> numCount = new HashMap<>();
+         for(int n:numbers){
+         if(!numCount.containsKey(n)){
+         numCount.put(n,0);
+         }else{
+         numCount.put(n,numCount.get(n)+1);
+         }
+         }
+         List<Integer> noDupes = new ArrayList<>();
+         for(int y:numCount.keySet()){
+         if(numCount.get(y)==0){
+         noDupes.add(y);
+         }
+         }
+         int[] result = new int[noDupes.size()];
+         for(int j=0;j<noDupes.size();j++){
+         result[j] = noDupes.get(j);
+         }
+
+         return result;
+         */
+        HashMap<String,Integer> stringCount = new HashMap<>();
+        for (Character c : input.toCharArray()) {
+            if (!stringCount.containsKey(c.toString())){
+                stringCount.put(c.toString(),0);
+            } else {
+                stringCount.put(c.toString(),stringCount.get(c.toString())+1);
+            }
+        }
+
+        return stringCount;
     }
 }
