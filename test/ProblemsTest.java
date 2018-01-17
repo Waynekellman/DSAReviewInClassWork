@@ -91,6 +91,8 @@ public class ProblemsTest {
     @Test
     public void removeDupes_4ples_returns_empty() {
 
+        int[] input = {7,7,7};
+        assertArrayEquals(new int[]{}, Problems.removeDupes(input));
     }
 
     @Test
